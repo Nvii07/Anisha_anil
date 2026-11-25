@@ -1,0 +1,2175 @@
+/* ==========================================================================
+   ANISHA ANIL — Y2K JEWELCASE PORTFOLIO v2
+   Ink & Paper Scrapbook Design System
+   ========================================================================== */
+
+:root {
+  --ink: #111111;
+  --ink2: #1b1b1b;
+  --paper: #ebe9e5;
+  --paper-ink: #141414;
+  --paper-mute: #5b5853;
+  --cream: #f2efe9;
+  --pink: #e2789a;
+  --pink-soft: #f2a6c0;
+  --tape: rgba(118, 118, 118, 0.84);
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-black: "Archivo Black", Impact, sans-serif;
+  --font-cond: "Anton", Impact, sans-serif;
+  --font-serif: "Abril Fatface", Georgia, serif;
+  --font-marker: "Permanent Marker", cursive;
+  --font-script: "Pacifico", cursive;
+  --font-mono: "Space Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.jf-root {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.jf-root img {
+  max-width: none;
+  display: block;
+  user-select: none;
+}
+
+.jf-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.jf-root h1,
+.jf-root h2,
+.jf-root h3,
+.jf-root h4,
+.jf-root p,
+.jf-root ul,
+.jf-root figure {
+  margin: 0;
+  padding: 0;
+}
+
+.jf-root ul {
+  list-style: none;
+}
+
+/* ── FLOATING QUICK-JUMP PILL NAV ─────────────────────────────────────────── */
+.jf-float-nav {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.78);
+  border: 1px solid rgba(242, 239, 233, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.jf-float-pill {
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.jf-float-pill:hover {
+  background: rgba(242, 239, 233, 0.12);
+}
+
+.jf-float-pill--accent {
+  background: var(--pink);
+  color: #141414;
+  font-weight: 700;
+}
+
+.jf-float-pill--accent:hover {
+  background: var(--pink-soft);
+  transform: translateY(-1px);
+}
+
+/* ── INK & PAPER BANDS + TORN EDGES ───────────────────────────────────────── */
+.jf-ink {
+  position: relative;
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(56px, 7vw, 110px) clamp(18px, 5vw, 80px);
+}
+
+.jf-paper {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: clamp(64px, 7vw, 110px) clamp(18px, 5vw, 80px);
+}
+
+.jf-edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 26px;
+  pointer-events: none;
+}
+
+.jf-edge-top {
+  top: -22px;
+}
+
+.jf-edge-bottom {
+  bottom: -22px;
+}
+
+.jf-edge > div {
+  position: absolute;
+  inset: 0;
+}
+
+.jf-edge-fibre {
+  background: #fbfaf8;
+}
+
+.jf-edge-face {
+  background: var(--paper);
+}
+
+.jf-edge-top .jf-edge-face {
+  top: 5px;
+}
+
+.jf-edge-bottom .jf-edge-face {
+  bottom: 5px;
+}
+
+/* ── RANSOM CUT-OUT TYPOGRAPHY ────────────────────────────────────────────── */
+.jf-ransom {
+  display: inline-flex;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  gap: 0.05em;
+  line-height: 1;
+}
+
+.jf-rl {
+  display: inline-block;
+  line-height: 0.86;
+  padding: 0.04em 0.03em;
+}
+
+.jf-sp {
+  display: inline-block;
+  width: 0.32em;
+}
+
+.jf-k-a {
+  font-family: var(--font-black);
+}
+
+.jf-k-low {
+  font-family: var(--font-black);
+  text-transform: lowercase;
+  font-size: 0.9em;
+}
+
+.jf-k-box {
+  font-family: var(--font-black);
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.06em 0.08em 0.02em;
+  margin: 0 0.03em;
+}
+
+.jf-k-serif {
+  font-family: var(--font-serif);
+  font-size: 1.08em;
+}
+
+.jf-k-cond {
+  font-family: var(--font-cond);
+  text-transform: uppercase;
+  line-height: 0.84;
+}
+
+.jf-paper .jf-k-box {
+  background: var(--paper-ink);
+  color: var(--paper);
+}
+
+/* ── HERO SECTION & CD JEWEL CASE ─────────────────────────────────────────── */
+.jf-hero {
+  min-height: 100svh;
+  padding-top: clamp(76px, 8vw, 116px);
+  padding-bottom: clamp(90px, 10vw, 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.jf-title {
+  position: relative;
+  align-self: flex-start;
+  margin-left: clamp(0px, 11vw, 190px);
+  padding: clamp(28px, 3vw, 48px) 0 clamp(18px, 2vw, 30px);
+}
+
+.jf-owner {
+  position: absolute;
+  left: clamp(14px, 2.4vw, 36px);
+  top: 0;
+  font-family: var(--font-marker);
+  font-size: clamp(18px, 2.3vw, 34px);
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  transform: rotate(-3deg);
+}
+
+.jf-doodle {
+  width: 1.5em;
+  height: 1.5em;
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  transform: rotate(-14deg);
+}
+
+.jf-h1 {
+  font-size: clamp(54px, 9.6vw, 154px);
+  color: var(--cream);
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+
+.jf-ring {
+  position: absolute;
+  left: -4%;
+  right: -6%;
+  top: 26%;
+  bottom: 4%;
+  border: 2px solid var(--pink);
+  border-radius: 50%;
+  transform: rotate(-7deg);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.jf-year {
+  position: absolute;
+  right: 2%;
+  bottom: -0.2em;
+  font-family: var(--font-marker);
+  font-size: clamp(12px, 1.2vw, 18px);
+  color: var(--cream);
+  transform: rotate(-6deg);
+}
+
+/* Jewel case container */
+.jf-case {
+  position: relative;
+  width: min(84vw, 860px);
+  margin-top: clamp(12px, 2.5vw, 34px);
+}
+
+.jf-jewel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 9.5% 1fr;
+  aspect-ratio: 1.14 / 1;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.12));
+  padding: 1.2%;
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, 0.72),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.jf-jewel-spine {
+  position: relative;
+  background: linear-gradient(180deg, #1b1b1d, #0f0f11);
+  border-radius: 5px 0 0 5px;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.jf-spine-ridges {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08) 0px,
+    rgba(255, 255, 255, 0.08) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0.6;
+}
+
+.jf-spine-text {
+  position: relative;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.85vw, 11px);
+  letter-spacing: 0.16em;
+  color: rgba(242, 239, 233, 0.7);
+  white-space: nowrap;
+}
+
+.jf-jewel-tray {
+  position: relative;
+  border-radius: 0 5px 5px 0;
+  background:
+    radial-gradient(circle at 50% 50%, #241920 0%, #151417 70%, #0d0d0f 100%);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 5%;
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.75);
+}
+
+.jf-jewel-backing {
+  position: absolute;
+  inset: 0;
+  padding: 3.5% 4.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.jf-track-meta {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.8vw, 10px);
+  letter-spacing: 0.14em;
+  color: rgba(226, 120, 154, 0.75);
+}
+
+.jf-track-meta--br {
+  color: rgba(242, 239, 233, 0.55);
+}
+
+/* CD Disc */
+.jf-disc {
+  position: relative;
+  width: 86%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 10px 34px rgba(0, 0, 0, 0.75),
+    0 0 0 2px rgba(255, 255, 255, 0.35),
+    inset 0 0 22px rgba(255, 255, 255, 0.25);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+
+.jf-disc:hover {
+  transform: rotate(10deg) scale(1.015);
+}
+
+.jf-disc-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  transition: opacity 0.45s ease;
+}
+
+.jf-disc-art--photo {
+  opacity: 0;
+  object-position: center 14%;
+}
+
+.jf-disc.is-photo .jf-disc-art--photo {
+  opacity: 1;
+}
+
+.jf-disc-iridescent {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 25deg,
+    rgba(226, 120, 154, 0.26),
+    rgba(127, 216, 196, 0.14),
+    rgba(255, 225, 53, 0.14),
+    rgba(255, 255, 255, 0.26),
+    rgba(192, 132, 252, 0.22),
+    rgba(226, 120, 154, 0.26)
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.jf-disc-rings {
+  position: absolute;
+  inset: 2.5%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.jf-disc-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 24%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 42%, rgba(255, 255, 255, 0.55) 43%, rgba(210, 210, 215, 0.72) 72%, rgba(255, 255, 255, 0.35) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.jf-disc-hole {
+  width: 44%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #141416;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.85);
+}
+
+.jf-disc-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%);
+  background: rgba(17, 17, 17, 0.72);
+  color: var(--pink-soft);
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.8vw, 11px);
+  letter-spacing: 0.14em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.jf-jewel-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 26%, transparent 27%),
+    linear-gradient(118deg, transparent 58%, rgba(255, 255, 255, 0.14) 59%, rgba(255, 255, 255, 0.02) 72%, transparent 73%);
+}
+
+.jf-hinge {
+  position: absolute;
+  left: 0;
+  width: 6px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 0 2px 2px 0;
+  pointer-events: none;
+}
+
+.jf-hinge--top {
+  top: 12%;
+}
+
+.jf-hinge--bot {
+  bottom: 12%;
+}
+
+/* Stickers */
+.jf-st {
+  position: absolute;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.48));
+  transition: scale 0.3s ease;
+  z-index: 4;
+}
+
+.jf-case .jf-st:hover {
+  scale: 1.08;
+}
+
+.jf-st-lips {
+  width: 21%;
+  height: auto;
+  right: -3%;
+  top: 4%;
+  transform: rotate(-8deg);
+}
+
+.jf-st-smile {
+  width: 11.5%;
+  height: auto;
+  right: 2%;
+  top: 23%;
+  transform: rotate(10deg);
+}
+
+.jf-st-star {
+  width: 13.5%;
+  height: auto;
+  left: -4%;
+  bottom: 12%;
+  transform: rotate(-12deg);
+}
+
+.jf-st-heart {
+  width: 13.5%;
+  right: 34%;
+  bottom: 16%;
+  transform: rotate(-6deg);
+  display: block;
+}
+
+.jf-st-heart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.jf-st-heart b {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-marker);
+  font-weight: 400;
+  font-size: clamp(10px, 1.45vw, 20px);
+  color: #fff;
+  transform: rotate(-8deg);
+  text-shadow: 0 1px 0 rgba(88, 28, 135, 0.65);
+}
+
+.jf-lbl-green {
+  right: 6%;
+  bottom: 24%;
+  background: #b6f03c;
+  color: #18240a;
+  font-size: clamp(11px, 1.55vw, 23px);
+  padding: 0.16em 0.65em;
+  transform: rotate(-4deg);
+  font-weight: 600;
+}
+
+.jf-lbl-orange {
+  right: 38%;
+  bottom: 3%;
+  background: #f2a223;
+  color: #3c1f00;
+  font-family: var(--font-black);
+  text-transform: uppercase;
+  font-size: clamp(9px, 1.15vw, 16px);
+  line-height: 1.05;
+  padding: 0.5em 0.7em 0.5em 1.3em;
+  transform: rotate(-9deg);
+  text-align: center;
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 14% 100%, 0 50%);
+}
+
+.jf-lbl-bubble {
+  right: 4%;
+  bottom: 2%;
+  font-family: var(--font-black);
+  text-transform: uppercase;
+  font-size: clamp(15px, 2.5vw, 36px);
+  line-height: 0.92;
+  color: #ff7a1f;
+  -webkit-text-stroke: 0.06em #3a1300;
+  paint-order: stroke fill;
+  text-shadow: 0 0.08em 0 #fff, 0 -0.04em 0 #fff, 0.06em 0 0 #fff, -0.06em 0 0 #fff;
+  transform: rotate(-5deg);
+}
+
+.jf-about-tab {
+  position: absolute;
+  right: clamp(10px, 5vw, 80px);
+  bottom: clamp(-30px, -1.6vw, -14px);
+  z-index: 5;
+  background: var(--pink);
+  color: #fff;
+  font-family: var(--font-marker);
+  font-size: clamp(16px, 2.3vw, 34px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35em 1.6em 0.3em 1.1em;
+  transform: rotate(-4deg);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.jf-about-tab:hover {
+  transform: rotate(-2deg) translateY(-3px);
+}
+
+/* Entrance animations */
+.jf-ready .jf-h1 .jf-rl {
+  animation: jf-drop 0.7s cubic-bezier(0.2, 0.9, 0.25, 1.15) both;
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+.jf-ready .jf-case .jf-st {
+  animation: jf-slap 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+}
+
+.jf-ready .jf-st-lips { animation-delay: 0.55s; }
+.jf-ready .jf-st-smile { animation-delay: 0.65s; }
+.jf-ready .jf-st-star { animation-delay: 0.75s; }
+.jf-ready .jf-st-heart { animation-delay: 0.85s; }
+.jf-ready .jf-lbl-green { animation-delay: 0.9s; }
+.jf-ready .jf-lbl-orange { animation-delay: 0.95s; }
+.jf-ready .jf-lbl-bubble { animation-delay: 1s; }
+
+@keyframes jf-drop {
+  from { opacity: 0; translate: 0 -0.35em; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes jf-slap {
+  from { opacity: 0; scale: 1.35; }
+  to { opacity: 1; scale: 1; }
+}
+
+/* ── ABOUT SECTION ────────────────────────────────────────────────────────── */
+.jf-about {
+  padding-top: clamp(56px, 6vw, 90px);
+  padding-bottom: clamp(60px, 6vw, 96px);
+}
+
+.jf-sheet {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(24px, 6vw, 110px);
+  max-width: 1240px;
+  margin: 0 auto;
+  font-size: clamp(13px, 1.25vw, 18px);
+  color: var(--paper-mute);
+}
+
+.jf-sheet b {
+  color: var(--paper-ink);
+  font-weight: 600;
+}
+
+.jf-sheet p {
+  margin-bottom: 1em;
+}
+
+.jf-sheet li {
+  line-height: 1.75;
+}
+
+.jf-h3 {
+  font-size: clamp(12px, 1.15vw, 17px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pink);
+  font-weight: 600;
+  margin: 1.4em 0 0.5em;
+}
+
+.jf-sheet > div > .jf-h3:first-child {
+  margin-top: 0;
+}
+
+.jf-skills {
+  display: flex;
+  gap: 10px;
+}
+
+.jf-skills span {
+  width: clamp(36px, 3.4vw, 50px);
+  height: clamp(36px, 3.4vw, 50px);
+  border-radius: 8px;
+  background: #1d1d1d;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: clamp(12px, 1vw, 15px);
+  transition: transform 0.25s ease;
+  cursor: default;
+}
+
+.jf-skills span:hover {
+  transform: translateY(-3px) rotate(-4deg);
+}
+
+.jf-lang-line {
+  margin-top: 0.85em;
+  font-size: 0.88em;
+}
+
+/* ── SECTION HEADERS, CAPTIONS & TAPE ─────────────────────────────────────── */
+.jf-head {
+  margin-bottom: clamp(22px, 3vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: clamp(10px, 1.4vw, 22px);
+}
+
+.jf-head-r {
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.jf-h2 {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 0.18em;
+  font-size: clamp(36px, 6vw, 96px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.jf-h2b {
+  font-family: var(--font-cond);
+  text-transform: uppercase;
+  font-size: 1.02em;
+  letter-spacing: 0.005em;
+  line-height: 0.86;
+}
+
+.jf-tools {
+  font-size: clamp(11px, 1.15vw, 17px);
+  font-weight: 600;
+  margin: 0 0 0.35em;
+  opacity: 0.92;
+}
+
+.jf-head-r .jf-tools {
+  margin-top: 0.3em;
+}
+
+.jf-note {
+  flex-basis: 100%;
+  font-size: clamp(11px, 0.95vw, 14px);
+  max-width: 980px;
+  opacity: 0.78;
+  margin-top: 0.8em;
+}
+
+.jf-cap {
+  font-size: clamp(11px, 0.92vw, 13.5px);
+  color: var(--paper-mute);
+  max-width: 760px;
+  margin: clamp(14px, 1.6vw, 22px) 0 0;
+}
+
+.jf-ink .jf-cap {
+  color: rgba(242, 239, 233, 0.68);
+}
+
+.jf-cap-c {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.jf-mini {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.8;
+  margin: 0 0 8px;
+}
+
+.jf-tape {
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+  background: var(--tape);
+  color: #fff;
+  font-weight: 600;
+  font-size: clamp(10px, 0.9vw, 13px);
+  padding: 0.55em 1.6em;
+  letter-spacing: 0.02em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  backdrop-filter: blur(1px);
+}
+
+/* Interactive work trigger cursor */
+[data-work-id] {
+  cursor: pointer;
+}
+
+/* ── GRAPHIC POSTERS WALL ─────────────────────────────────────────────────── */
+.jf-posters {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.jf-posters .jf-head {
+  padding: 0 clamp(18px, 5vw, 80px);
+}
+
+.jf-poster-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+.jf-poster-tile {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 5 / 7;
+  background: #181818;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s;
+}
+
+.jf-poster-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.jf-poster-tile:hover {
+  transform: scale(1.06) rotate(-1.5deg);
+  z-index: 3;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.65));
+}
+
+.jf-poster-index-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(14px, 2vw, 26px);
+  background: #19191b;
+  border: 1px dashed rgba(242, 239, 233, 0.22);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.35s ease;
+}
+
+.jf-poster-index-tile:hover {
+  background: #222226;
+  transform: scale(1.02);
+}
+
+.jf-poster-index-num {
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 0.9vw, 12px);
+  color: var(--pink);
+  letter-spacing: 0.1em;
+}
+
+.jf-poster-index-title {
+  font-family: var(--font-cond);
+  font-size: clamp(22px, 2.8vw, 40px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.jf-poster-index-sub {
+  font-size: clamp(10px, 0.85vw, 12px);
+  opacity: 0.68;
+}
+
+/* ── ADS & CAMPAIGNS (PAPER BAND) ─────────────────────────────────────────── */
+.jf-pub-pair {
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 60px);
+  align-items: flex-start;
+  margin-top: -1em;
+}
+
+.jf-pub-pair figure {
+  position: relative;
+  width: min(34vw, 440px);
+}
+
+.jf-pub-pair img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  transition: transform 0.35s ease;
+}
+
+.jf-pub-pair figure:hover img {
+  transform: translateY(-4px);
+}
+
+.jf-pub-a {
+  margin-top: clamp(30px, 5vw, 80px) !important;
+}
+
+.jf-pub-a .jf-tape {
+  position: absolute;
+  left: -6%;
+  top: -14px;
+}
+
+.jf-pub-b {
+  transform: rotate(3deg);
+}
+
+.jf-block {
+  position: relative;
+  margin-top: clamp(56px, 7vw, 110px);
+}
+
+.jf-block > .jf-tape {
+  margin-bottom: -12px;
+  margin-left: clamp(0px, 2vw, 30px);
+}
+
+.jf-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.62fr;
+  gap: clamp(8px, 1.2vw, 18px);
+  background: #2a2a2a;
+  padding: clamp(10px, 1.6vw, 24px);
+  align-items: end;
+}
+
+.jf-board > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.jf-board > img:hover {
+  transform: translateY(-4px);
+}
+
+/* Phone Mockup */
+.jf-phone {
+  position: relative;
+  aspect-ratio: 9 / 19;
+  width: 100%;
+  border-radius: clamp(18px, 2.4vw, 36px);
+  background: #0d0d0d;
+  padding: clamp(4px, 0.5vw, 8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35), 0 0 0 1px #3a3a3a inset;
+}
+
+.jf-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(14px, 2vw, 30px);
+  overflow: hidden;
+  background: #fff;
+}
+
+.jf-notch {
+  position: absolute;
+  z-index: 2;
+  top: 6px;
+  left: 50%;
+  width: 32%;
+  height: clamp(10px, 1.3vw, 20px);
+  border-radius: 20px;
+  background: #0d0d0d;
+  transform: translateX(-50%);
+}
+
+.jf-feed {
+  padding: clamp(22px, 3vw, 40px) 6px 6px;
+  color: #111;
+  font-size: clamp(7px, 0.7vw, 10px);
+  line-height: 1.3;
+}
+
+.jf-feed-top {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.jf-feed-top i {
+  display: block;
+  font-style: normal;
+  opacity: 0.6;
+}
+
+.jf-avatar {
+  width: 2.8em;
+  height: 2.8em;
+  border-radius: 50%;
+  background: var(--pink);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  flex: none;
+}
+
+.jf-feed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.jf-feed-grid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* 4-card strip */
+.jf-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 20px);
+  align-items: center;
+}
+
+.jf-cards img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s ease;
+}
+
+.jf-cards img:hover {
+  transform: translateY(-6px) rotate(-1deg);
+}
+
+/* Moodboard */
+.jf-mood {
+  display: grid;
+  grid-template-columns: 0.62fr 1fr 0.9fr 0.9fr;
+  grid-template-rows: auto auto;
+  gap: clamp(10px, 1.4vw, 20px);
+  align-items: start;
+}
+
+.jf-phone-b {
+  grid-row: 1 / 3;
+}
+
+.jf-mood img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.jf-mood img:hover {
+  transform: scale(1.03);
+}
+
+.jf-mood-a {
+  grid-row: 1 / 3;
+  transform: rotate(-2deg);
+}
+
+.jf-mood-b {
+  transform: rotate(3deg);
+}
+
+.jf-mood-c {
+  transform: rotate(-3deg);
+}
+
+.jf-mood-sw {
+  grid-column: 3 / 5;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.jf-mood-sw span {
+  aspect-ratio: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.jf-mood-sw span:hover {
+  transform: translateY(-3px) scale(1.06);
+}
+
+/* ── DIGITAL ART TRIO (INK BAND) ──────────────────────────────────────────── */
+.jf-digital-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2.5vw, 36px);
+  align-items: start;
+}
+
+.jf-digital-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease;
+}
+
+.jf-digital-card:nth-child(2) {
+  margin-top: clamp(14px, 3vw, 42px);
+}
+
+.jf-digital-card:hover {
+  transform: translateY(-6px);
+}
+
+.jf-digital-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  object-fit: cover;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65);
+}
+
+.jf-digital-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 10px;
+  font-size: clamp(11px, 0.95vw, 14px);
+}
+
+.jf-digital-meta b {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.jf-digital-meta span {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--pink);
+}
+
+/* ── PRINT DESIGN (PAPER BAND) ────────────────────────────────────────────── */
+.jf-mag {
+  padding-bottom: clamp(70px, 8vw, 120px);
+}
+
+.jf-print-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  max-width: 1120px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.jf-print-frame {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease;
+}
+
+.jf-print-frame:hover {
+  transform: translateY(-6px);
+}
+
+.jf-print-frame .jf-tape {
+  position: absolute;
+  top: -14px;
+  left: 14px;
+}
+
+.jf-print-frame img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.24);
+}
+
+.jf-print-frame--back {
+  transform: rotate(2deg);
+}
+
+/* ── CASE STUDIES / BRANDING KITS (INK BAND) ──────────────────────────────── */
+.jf-kit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(18px, 3vw, 50px);
+  align-items: start;
+  margin-top: clamp(16px, 2vw, 30px);
+}
+
+.jf-kit-flip {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.jf-kit-tape {
+  position: absolute !important;
+  right: 0;
+  top: -6px;
+}
+
+.jf-kit-logo {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  transform: rotate(-3deg);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease;
+}
+
+.jf-kit-logo:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.jf-kit-flip .jf-kit-logo {
+  transform: rotate(3.5deg);
+}
+
+.jf-kit-info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 24px);
+  font-size: clamp(12px, 0.98vw, 14.5px);
+  color: rgba(242, 239, 233, 0.82);
+  padding-top: clamp(24px, 3vw, 42px);
+}
+
+.jf-kit-title {
+  font-family: var(--font-cond);
+  font-size: clamp(24px, 2.8vw, 40px);
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1;
+}
+
+.jf-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  gap: 0 18px;
+  font-size: clamp(10px, 0.95vw, 14px);
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+.jf-swatches {
+  display: flex;
+  gap: 6px;
+}
+
+.jf-swatches span {
+  flex: 1;
+  max-width: 70px;
+  aspect-ratio: 0.62;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.jf-swatches span:hover {
+  transform: translateY(-4px);
+}
+
+.jf-callout-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jf-callout-chips span {
+  font-size: 11px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--cream);
+}
+
+.jf-dash {
+  border: 0;
+  border-top: 2px dashed rgba(242, 239, 233, 0.26);
+  margin: clamp(50px, 6vw, 84px) 0 clamp(26px, 3vw, 40px);
+}
+
+/* ── STUDIO CARDS STAGE (PAPER BAND) ──────────────────────────────────────── */
+.jf-pack {
+  background: #dad9dc;
+  --paper: #dad9dc;
+}
+
+.jf-pack .jf-edge-face {
+  background: #dad9dc;
+}
+
+.jf-pack-stage {
+  position: relative;
+  min-height: clamp(260px, 34vw, 400px);
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 3vw, 44px) 0;
+}
+
+.jf-cards-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 38px);
+  flex-wrap: wrap;
+}
+
+.jf-biz-card {
+  position: relative;
+  width: clamp(260px, 32vw, 360px);
+  aspect-ratio: 1.65 / 1;
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s ease;
+}
+
+.jf-biz-card--blue {
+  background: #1d4ed8;
+  color: #fff;
+  transform: rotate(-4deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.jf-biz-card--blue:hover {
+  transform: rotate(-1deg) translateY(-6px);
+}
+
+.jf-biz-logo {
+  font-family: var(--font-cond);
+  font-size: 38px;
+  line-height: 1;
+}
+
+.jf-biz-halftone {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.45) 2px, transparent 2.5px);
+  background-size: 9px 9px;
+}
+
+.jf-biz-meta h4 {
+  font-family: var(--font-cond);
+  font-size: 20px;
+  letter-spacing: 0.03em;
+}
+
+.jf-biz-meta p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+.jf-biz-card--white {
+  background: #f7f5f0;
+  color: #141414;
+  transform: rotate(4deg);
+}
+
+.jf-biz-card--white:hover {
+  transform: rotate(1deg) translateY(-6px);
+}
+
+.jf-biz-tape {
+  position: absolute !important;
+  right: 22px;
+  top: -12px;
+  font-size: 10px !important;
+  padding: 0.35em 1.1em !important;
+}
+
+.jf-biz-pink-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  border-radius: 0 12px 12px 0;
+  background: #ff5ca8;
+}
+
+.jf-biz-card--white h4 {
+  font-family: var(--font-cond);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.jf-biz-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #5b5853;
+}
+
+.jf-biz-rule {
+  height: 1px;
+  background: rgba(20, 20, 20, 0.15);
+  margin: 14px 16px 12px 0;
+}
+
+.jf-biz-info {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  color: #222;
+}
+
+.jf-hand {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--font-marker);
+  font-size: clamp(12px, 1.3vw, 20px);
+  color: #2a2a2a;
+}
+
+.jf-hand svg {
+  width: clamp(40px, 5vw, 80px);
+  height: auto;
+  fill: none;
+  stroke: #2a2a2a;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.jf-hand-a {
+  left: 4%;
+  bottom: 4%;
+}
+
+.jf-hand-b {
+  right: 4%;
+  top: 4%;
+}
+
+/* ── THANK YOU FOOTER (INK BAND) ──────────────────────────────────────────── */
+.jf-thanks {
+  text-align: center;
+  padding-top: clamp(70px, 8vw, 130px);
+}
+
+.jf-ty {
+  position: relative;
+  display: inline-block;
+  padding: 0 1em;
+}
+
+.jf-ty-word {
+  font-size: clamp(44px, 7vw, 112px);
+}
+
+.jf-ty-word .jf-rl {
+  color: var(--pink-soft);
+}
+
+.jf-ty-word .jf-k-box {
+  background: var(--pink-soft);
+  color: var(--ink);
+}
+
+.jf-doodle-ty {
+  position: absolute;
+  left: -0.2em;
+  top: -0.1em;
+  width: clamp(40px, 5vw, 80px);
+  height: auto;
+}
+
+.jf-ring-ty {
+  left: 44%;
+  right: -4%;
+  top: 12%;
+  bottom: -6%;
+}
+
+.jf-contacts {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(12px, 2vw, 30px);
+  text-align: left;
+  max-width: 1120px;
+  margin: clamp(40px, 5vw, 80px) auto 0;
+  font-size: clamp(11px, 0.95vw, 14px);
+}
+
+.jf-contacts a {
+  display: block;
+  word-break: break-word;
+  border-top: 1px solid rgba(242, 239, 233, 0.18);
+  padding-top: 12px;
+  transition: color 0.25s;
+}
+
+.jf-contacts a:hover {
+  color: var(--pink-soft);
+}
+
+.jf-contacts span {
+  display: block;
+  font-size: 0.82em;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.jf-fine {
+  font-size: 11px;
+  opacity: 0.48;
+  margin-top: clamp(40px, 5vw, 70px);
+}
+
+/* ── SCROLL REVEAL ────────────────────────────────────────────────────────── */
+.jf-rv {
+  opacity: 0;
+  translate: 0 28px;
+  transition: opacity 0.7s ease, translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.jf-rv.jf-in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ── LIGHTBOX INSPECTOR MODAL ─────────────────────────────────────────────── */
+.jf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 10, 12, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.jf-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.jf-modal-dialog {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: 90vh;
+  background: #171719;
+  color: var(--cream);
+  border: 1px solid rgba(242, 239, 233, 0.16);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75);
+}
+
+.jf-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 239, 233, 0.2);
+  background: rgba(17, 17, 17, 0.85);
+  color: var(--cream);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.jf-modal-close:hover {
+  background: var(--pink);
+  color: #141414;
+}
+
+.jf-modal-visual {
+  position: relative;
+  background: #0d0d0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  min-height: 340px;
+  border-right: 1px solid rgba(242, 239, 233, 0.1);
+}
+
+.jf-modal-visual > img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.jf-modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 239, 233, 0.22);
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--cream);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.jf-modal-arrow:hover {
+  background: var(--pink);
+  color: #141414;
+}
+
+.jf-modal-arrow--prev { left: 12px; }
+.jf-modal-arrow--next { right: 12px; }
+
+/* 3D Flip inside modal for Lobster House */
+.jf-flip-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  perspective: 1200px;
+}
+
+.jf-flip-card {
+  position: relative;
+  width: min(360px, 70vw);
+  aspect-ratio: 5 / 7.7;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.jf-flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.jf-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.jf-flip-back {
+  transform: rotateY(180deg);
+}
+
+.jf-flip-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.jf-flip-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(17, 17, 17, 0.82);
+  color: var(--pink-soft);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.jf-flip-btn {
+  border: 1px solid var(--pink);
+  background: var(--pink);
+  color: #141414;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.jf-modal-info {
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.jf-modal-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--pink);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.jf-modal-title {
+  font-family: var(--font-cond);
+  font-size: clamp(24px, 2.5vw, 34px);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 4px;
+}
+
+.jf-modal-tagline {
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(242, 239, 233, 0.68);
+  margin-bottom: 16px;
+}
+
+.jf-modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  padding: 12px 0;
+  border-top: 1px dashed rgba(242, 239, 233, 0.16);
+  border-bottom: 1px dashed rgba(242, 239, 233, 0.16);
+  margin-bottom: 14px;
+}
+
+.jf-modal-specs strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--pink);
+  text-transform: uppercase;
+}
+
+.jf-modal-specs span {
+  font-size: 12.5px;
+}
+
+.jf-modal-desc {
+  font-size: 13.5px;
+  color: rgba(242, 239, 233, 0.82);
+  margin-bottom: 14px;
+}
+
+.jf-modal-callouts h5,
+.jf-modal-swatches h5 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pink);
+  margin: 0 0 8px;
+}
+
+.jf-modal-callouts ul {
+  margin: 0 0 14px;
+  padding-left: 16px;
+  list-style: disc;
+  font-size: 12.5px;
+  color: rgba(242, 239, 233, 0.8);
+}
+
+.jf-modal-swatch-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jf-modal-swatch-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.jf-modal-swatch-chip:hover {
+  border-color: var(--pink);
+}
+
+.jf-modal-swatch-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.jf-modal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(242, 239, 233, 0.12);
+}
+
+.jf-modal-nav-btn {
+  border: 1px solid rgba(242, 239, 233, 0.24);
+  background: transparent;
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.jf-modal-nav-btn:hover {
+  background: var(--pink);
+  color: #141414;
+  border-color: var(--pink);
+}
+
+.jf-modal-counter {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ── RECEIPT INDEX DRAWER ─────────────────────────────────────────────────── */
+.jf-receipt-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: min(390px, 92vw);
+  height: 100vh;
+  z-index: 2500;
+  background: #1a1a1c;
+  color: var(--cream);
+  box-shadow: -16px 0 44px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jf-receipt-drawer.open {
+  right: 0;
+}
+
+.jf-receipt-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(242, 239, 233, 0.12);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.jf-receipt-close {
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.jf-receipt-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+}
+
+.jf-receipt-paper {
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: 20px 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.jf-receipt-brand {
+  text-align: center;
+  border-bottom: 1px dashed rgba(20, 20, 20, 0.3);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.jf-receipt-brand strong {
+  display: block;
+  font-family: var(--font-cond);
+  font-size: 20px;
+  letter-spacing: 0.03em;
+}
+
+.jf-receipt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 4px;
+  border-bottom: 1px dotted rgba(20, 20, 20, 0.18);
+  cursor: pointer;
+}
+
+.jf-receipt-row:hover {
+  background: rgba(226, 120, 154, 0.2);
+}
+
+.jf-receipt-foot {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(20, 20, 20, 0.3);
+  text-align: center;
+}
+
+.jf-receipt-foot a {
+  color: #b41e55;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ── TOAST ────────────────────────────────────────────────────────────────── */
+.jf-toast {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 3000;
+  background: #141414;
+  color: var(--cream);
+  border: 1.5px solid var(--pink);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.jf-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .jf-modal-dialog {
+    grid-template-columns: 1fr;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  .jf-modal-visual {
+    border-right: 0;
+    border-bottom: 1px solid rgba(242, 239, 233, 0.1);
+  }
+}
+
+@media (max-width: 760px) {
+  .jf-float-nav {
+    top: 10px;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 16px);
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .jf-float-pill {
+    font-size: 10.5px;
+    padding: 5px 8px;
+  }
+
+  .jf-hero {
+    padding-top: 72px;
+  }
+
+  .jf-st-lips {
+    top: 9%;
+  }
+
+  .jf-lbl-green {
+    right: 3%;
+    bottom: 26%;
+  }
+
+  .jf-title {
+    margin-left: 0;
+    align-self: center;
+  }
+
+  .jf-h1 {
+    font-size: 11.4vw;
+  }
+
+  .jf-case {
+    width: 100%;
+  }
+
+  .jf-about-tab {
+    bottom: 22px;
+  }
+
+  .jf-sheet {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .jf-poster-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jf-head:not(.jf-head-r) .jf-tools {
+    margin-left: 0;
+    margin-top: 0.4em;
+  }
+
+  .jf-h2 {
+    flex-wrap: wrap;
+  }
+
+  .jf-pub-pair figure {
+    width: 44vw;
+  }
+
+  .jf-board {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .jf-board .jf-phone {
+    display: none;
+  }
+
+  .jf-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jf-mood {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .jf-phone-b {
+    display: none;
+  }
+
+  .jf-mood-a {
+    grid-row: auto;
+  }
+
+  .jf-mood-sw {
+    grid-column: 1 / -1;
+  }
+
+  .jf-digital-trio {
+    grid-template-columns: 1fr;
+  }
+
+  .jf-digital-card:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .jf-print-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .jf-kit,
+  .jf-kit-flip {
+    grid-template-columns: 1fr;
+  }
+
+  .jf-kit-flip .jf-kit-logo {
+    order: -1;
+  }
+
+  .jf-kit-tape {
+    top: -26px;
+  }
+
+  .jf-spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+  }
+
+  .jf-contacts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .jf-hand {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jf-rv {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+
+  .jf-ready .jf-h1 .jf-rl,
+  .jf-ready .jf-case .jf-st {
+    animation: none;
+  }
+
+  .jf-root * {
+    transition: none !important;
+  }
+}
