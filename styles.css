@@ -837,24 +837,31 @@ body {
 .jf-h3 {
   font-size: clamp(12px, 1.15vw, 17px);
   letter-spacing: 0.06em;
+  line-height: 1.25;
   text-transform: uppercase;
   color: var(--pink);
   font-weight: 600;
-  margin: 1.4em 0 0.5em;
+  margin: 1.55em 0 0.65em;
 }
 
 .jf-sheet > div > .jf-h3:first-child {
   margin-top: 0;
 }
 
+.jf-sheet > div > :last-child {
+  margin-bottom: 0;
+}
+
 .jf-skills {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
+  margin: 0.25em 0 0.35em;
 }
 
 .jf-skills span {
-  width: clamp(42px, 3.8vw, 54px);
-  height: clamp(42px, 3.8vw, 54px);
+  width: clamp(44px, 3.8vw, 52px);
+  height: clamp(44px, 3.8vw, 52px);
   border-radius: 10px;
   background: #1d1d1d;
   color: #fff;
@@ -863,7 +870,7 @@ body {
   font-weight: 600;
   font-size: clamp(12px, 1vw, 15px);
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
   transition: transform 0.25s ease;
   cursor: default;
 }
@@ -881,7 +888,9 @@ body {
 
 .jf-lang-line {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 0.92em;
+  line-height: 1.65;
 }
 
 /* ── SECTION HEADERS, CAPTIONS & TAPE ─────────────────────────────────────── */
