@@ -62,13 +62,7 @@ body {
   text-decoration: none;
 }
 
-.jf-root h1,
-.jf-root h2,
-.jf-root h3,
-.jf-root h4,
-.jf-root p,
-.jf-root ul,
-.jf-root figure {
+.jf-root :where(h1, h2, h3, h4, p, ul, figure) {
   margin: 0;
   padding: 0;
 }
@@ -1588,10 +1582,53 @@ body {
   margin-bottom: 2px;
 }
 
+.jf-footer-meta {
+  max-width: 1120px;
+  margin: clamp(44px, 5vw, 72px) auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(242, 239, 233, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
 .jf-fine {
+  font-size: 11.5px;
+  line-height: 1.7;
+  opacity: 0.56;
+}
+
+.jf-credits {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
   font-size: 11px;
-  opacity: 0.48;
-  margin-top: clamp(40px, 5vw, 70px);
+  line-height: 1.6;
+  color: rgba(242, 239, 233, 0.72);
+}
+
+.jf-credit-gemini {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.jf-credit-gemini svg {
+  color: #38bdf8;
+}
+
+.jf-credit-sep {
+  color: var(--pink-soft);
+}
+
+.jf-credits a {
+  transition: color 0.2s ease;
+}
+
+.jf-credits a:hover {
+  color: var(--pink-soft);
 }
 
 /* ── SCROLL REVEAL ────────────────────────────────────────────────────────── */
