@@ -380,7 +380,7 @@
       .join('');
   }
 
-  /* ── 4. Hero CD Toggle (Illustrated ↔ Original Photo) ────────────────── */
+  /* ── 4. Hero CD Toggle & Turntable Spin Physics ──────────────────────── */
   function initHeroDiscToggle() {
     const disc = document.getElementById('hero-cd-disc');
     if (!disc) return;
@@ -396,6 +396,80 @@
         e.preventDefault();
         toggle();
       }
+    });
+
+    // Smooth turntable rotation on hover; completes current 360deg rotation to ease out upright on unhover
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const TARGET_SPEED = 55; // deg/s (~6.5s per full revolution)
+    let mode = 'idle'; // 'idle' | 'spinning' | 'stopping'
+    let angle = 0;
+    let velocity = 0;
+    let startAngle = 0;
+    let remaining = 0;
+    let stopDuration = 0.8;
+    let stopElapsed = 0;
+    let lastTime = 0;
+    let rafId = null;
+
+    const step = now => {
+      const dt = Math.min((now - lastTime) / 1000, 0.05);
+      lastTime = now;
+
+      if (mode === 'spinning') {
+        velocity += (TARGET_SPEED - velocity) * Math.min(1, dt * 4.5);
+        angle += velocity * dt;
+        disc.style.transform = `rotate(${angle.toFixed(3)}deg)`;
+        rafId = requestAnimationFrame(step);
+      } else if (mode === 'stopping') {
+        stopElapsed += dt;
+        const t = Math.min(stopElapsed / stopDuration, 1);
+        const eased = 1 - Math.pow(1 - t, 2);
+        angle = startAngle + remaining * eased;
+        velocity = ((2 * remaining) / stopDuration) * (1 - t);
+
+        if (t >= 1) {
+          angle = 0;
+          velocity = 0;
+          mode = 'idle';
+          disc.style.transform = 'rotate(0deg)';
+          rafId = null;
+        } else {
+          disc.style.transform = `rotate(${angle.toFixed(3)}deg)`;
+          rafId = requestAnimationFrame(step);
+        }
+      } else {
+        rafId = null;
+      }
+    };
+
+    const ensureLoop = () => {
+      if (rafId === null) {
+        lastTime = performance.now();
+        rafId = requestAnimationFrame(step);
+      }
+    };
+
+    disc.addEventListener('mouseenter', () => {
+      mode = 'spinning';
+      ensureLoop();
+    });
+
+    disc.addEventListener('mouseleave', () => {
+      const mod = ((angle % 360) + 360) % 360;
+      if (mod < 0.25 && velocity < 5) {
+        angle = 0;
+        velocity = 0;
+        mode = 'idle';
+        disc.style.transform = 'rotate(0deg)';
+        return;
+      }
+      startAngle = angle;
+      remaining = 360 - mod;
+      stopDuration = Math.max(0.55, Math.min(3.2, (2 * remaining) / Math.max(velocity, 28)));
+      stopElapsed = 0;
+      mode = 'stopping';
+      ensureLoop();
     });
   }
 
