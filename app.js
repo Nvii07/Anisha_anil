@@ -615,13 +615,101 @@
     });
   }
 
-  /* ── 8. Reveal & Ready Motion ────────────────────────────────────────── */
-  function initRevealMotion() {
+  /* ── 8. Splash Screen & Reveal Motion ────────────────────────────────── */
+  function activateHeroReady() {
     const root = document.getElementById('jf-root');
     if (root) {
-      setTimeout(() => root.classList.add('jf-ready'), 40);
+      root.classList.add('jf-ready');
+    }
+  }
+
+  function initSplashScreen() {
+    const splash = document.getElementById('jf-splash');
+    const fill = document.getElementById('splash-fill');
+    const track = document.getElementById('splash-track');
+    const pct = document.getElementById('splash-pct');
+
+    if (!splash || !fill || !track) {
+      activateHeroReady();
+      return;
     }
 
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      splash.style.display = 'none';
+      activateHeroReady();
+      return;
+    }
+
+    let exited = false;
+    let rafId = null;
+    let exitTimer = null;
+    const DURATION = 1650;
+
+    document.body.style.overflow = 'hidden';
+
+    const easeProgress = t => (t < 0.5 ? 2.2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+    const exitSplash = () => {
+      if (exited) return;
+      exited = true;
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      if (exitTimer !== null) clearTimeout(exitTimer);
+      fill.style.transform = 'scaleX(1)';
+      track.setAttribute('aria-valuenow', '100');
+      if (pct) pct.textContent = '100%';
+      splash.classList.add('is-exiting');
+      document.body.style.overflow = '';
+      setTimeout(activateHeroReady, 180);
+      setTimeout(() => {
+        splash.style.display = 'none';
+      }, 650);
+    };
+
+    const startSplash = () => {
+      if (exited) return;
+      splash.classList.add('is-active');
+      const startTime = performance.now() + 260;
+
+      const tick = now => {
+        if (exited) return;
+        if (now < startTime) {
+          rafId = requestAnimationFrame(tick);
+          return;
+        }
+        const raw = Math.min((now - startTime) / DURATION, 1);
+        const eased = Math.min(easeProgress(raw), 1);
+        fill.style.transform = `scaleX(${eased.toFixed(4)})`;
+        const val = Math.round(eased * 100);
+        track.setAttribute('aria-valuenow', String(val));
+        if (pct) pct.textContent = `${String(val).padStart(2, '0')}%`;
+
+        if (raw < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          exitTimer = setTimeout(exitSplash, 260);
+        }
+      };
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    splash.addEventListener('click', exitSplash);
+    window.addEventListener('keydown', e => {
+      if (!exited && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) {
+        e.preventDefault();
+        exitSplash();
+      }
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      Promise.race([document.fonts.ready, new Promise(res => setTimeout(res, 450))]).then(startSplash);
+    } else {
+      startSplash();
+    }
+  }
+
+  function initRevealMotion() {
     const items = Array.from(document.querySelectorAll('.jf-rv'));
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced || typeof IntersectionObserver === 'undefined') {
@@ -646,6 +734,7 @@
   /* ── Boot ────────────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     hydratePaperTypography();
+    initSplashScreen();
     renderPostersWall();
     renderAdsSection();
     renderDigitalArt();

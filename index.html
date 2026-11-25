@@ -18,9 +18,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Archivo+Black&family=Pacifico&family=Permanent+Marker&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
+  <!-- ── 00. Y2K SPLASH SCREEN ───────────────────────────────────────── -->
+  <div class="jf-splash" id="jf-splash" role="status" aria-label="Loading Anisha Anil portfolio" tabindex="0">
+    <div class="jf-splash-inner">
+      <span class="jf-tape jf-splash-tape" data-tape="splash-track">TRACK 00 · LOADING</span>
+
+      <div class="jf-splash-lockup">
+        <span class="jf-splash-sub">
+          <svg class="jf-doodle" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M30 4 L37 24 L58 24 L41 37 L48 57 L30 44 L12 57 L19 37 L2 24 L23 24 Z" />
+          </svg>
+          Graphic Designer
+        </span>
+        <div class="jf-splash-name" data-ransom="ANISHA ANIL" data-salt="splash">ANISHA ANIL</div>
+        <span class="jf-ring jf-splash-ring" aria-hidden="true"></span>
+      </div>
+
+      <div class="jf-splash-meter">
+        <div class="jf-splash-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="splash-track">
+          <div class="jf-splash-fill" id="splash-fill"></div>
+        </div>
+        <div class="jf-splash-meta">
+          <span>VOL. 02 · 2026</span>
+          <span id="splash-pct">00%</span>
+        </div>
+      </div>
+
+      <span class="jf-splash-hint">Click or press any key to enter</span>
+    </div>
+  </div>
+
   <div class="jf-root" id="jf-root">
 
     <!-- Subtle Floating Quick-Jump & Index Controls -->
@@ -463,6 +493,6 @@
   <div id="toast-notice" class="jf-toast" role="status" aria-live="polite"></div>
 
   <script src="projects-data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
