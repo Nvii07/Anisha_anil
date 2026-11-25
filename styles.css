@@ -407,12 +407,21 @@ body {
     0 10px 34px rgba(0, 0, 0, 0.75),
     0 0 0 2px rgba(255, 255, 255, 0.35),
     inset 0 0 22px rgba(255, 255, 255, 0.25);
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: scale 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: jf-cd-spin 4.2s linear infinite;
+  animation-play-state: paused;
+  will-change: transform;
   outline: none;
 }
 
 .jf-disc:hover {
-  transform: rotate(10deg) scale(1.015);
+  animation-play-state: running;
+  scale: 1.015;
+}
+
+@keyframes jf-cd-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .jf-disc-art {
@@ -2174,7 +2183,8 @@ body {
   }
 
   .jf-ready .jf-h1 .jf-rl,
-  .jf-ready .jf-case .jf-st {
+  .jf-ready .jf-case .jf-st,
+  .jf-disc {
     animation: none;
   }
 
